@@ -1,12 +1,10 @@
-import numpy as np
-
 class ArrayQueue:
-    queue = []
+
     def __init__(self, capacity):
         self.capacity = capacity
         self.front = 0
         self.rear = 0
-
+        self.queue = list()
     def is_empty(self):
         if self.queue:
             return False
@@ -14,13 +12,12 @@ class ArrayQueue:
             return True
 
     def is_full(self):
-        if self.is_empty():
-           return False
-        elif self.rear == self.front:
-            return True
+        if not self.is_empty():
+           if self.front == self.rear:
+               return True
         else:
             return False
-
+        
     def double_capacity(self):
         self.queue = self.queue[self.front:] + self.queue[:self.rear]
         self.rear = self.capacity
