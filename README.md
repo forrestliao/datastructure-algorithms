@@ -9,4 +9,4 @@ read in medium: https://medium.com/@z9508010531/use-array-to-implement-a-queue-7
 #2 stack-array:   
 array_stack.py    
 use array to implement stack   
-read in medium:　　 
+read in medium: https://medium.com/@z9508010531/2-use-array-to-implement-a-stack-876108a98ed3?source=friends_link&sk=1577dbf6a82a97cb6f510406fdd36c5f
