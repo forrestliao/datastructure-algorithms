@@ -6,15 +6,14 @@ class ArrayQueue:
         self.rear = 0
         self.queue = list()
     def is_empty(self):
-        if self.queue:
-            return False
-        else:
+        if len(self.queue) != self.capacity and self.front == self.rear :
             return True
+        else:
+            return False
 
     def is_full(self):
-        if not self.is_empty():
-           if self.front == self.rear:
-               return True
+        if len(self.queue) == self.capacity and self.front == self.rear:
+            return True
         else:
             return False
         
@@ -54,22 +53,8 @@ if __name__ == "__main__":
     queue1.push("C")
     queue1.push("D")
     queue1.push("E")
-    queue1.pop()
     queue1.push("F")
-    queue1.pop()
-    queue1.push("G")
-    queue1.push("H")
-    queue1.push("I")
-    queue1.pop()
-    queue1.pop()
-    queue1.pop()
-    queue1.push("J")
-    queue1.push("K")
-    queue1.push("L")
-    queue1.push("M")
-    queue1.push("N")
-    queue1.push("O")
-    queue1.push("P")
+
     print("c:{},f:{},r:{},q:{}".format(queue1.capacity, queue1.front, queue1.rear, queue1.queue))
     queue1.print_queue()
 
