@@ -6,8 +6,7 @@ class TreeNode:
 
 def insert(node_list, root, i, n):
         if i<n:
-            temp = TreeNode(node_list[i])
-            root = temp
+            root = TreeNode(node_list[i])
 
             # insert left child
             root.left = insert(node_list, root.left, 2 * i + 1, n)
@@ -36,17 +35,12 @@ def inorder_recursive(node):
     inorder_travel(node)
     return inorder_res
 
-# def inorder_iteration(node):
-#     inorder_res = []
-#     stack = []
-#     while node or stack!= []:
-#         stack.append(node)
-#         node =
-#     #TODO
-
-
-
-
+def inorder_iteration(node):
+    inorder_res = []
+    stack = []
+    while node or stack!= []:
+        stack.append(node)
+        node =
 
 
 def run_test():
