@@ -4,7 +4,9 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def insert(node_list, root, i, n):
+def build_tree(node_list= [1, 2, 3, 4, 5, 6, 7]):
+
+    def insert(node_list, root, i, n):
         if i<n:
             root = TreeNode(node_list[i])
 
@@ -14,7 +16,6 @@ def insert(node_list, root, i, n):
             root.right = insert(node_list, root.right, 2 * i + 2, n)
         return root
 
-def build_tree(node_list= [1, 2, 3, 4, 5, 6, 7]):
     n = len(node_list)
     root = None
     root = insert(node_list, root, 0, n)
@@ -39,15 +40,63 @@ def inorder_iteration(node):
     inorder_res = []
     stack = []
     while node or stack!= []:
-        stack.append(node)
-        node =
-
+        # if not left, pop the top node, and set current to top node's right node
+        if node!= None:
+            stack.append(node)
+            node =  node.left
+        elif node == None and stack!= []:
+            poped_node = stack.pop()
+            if poped_node.val!= None:
+                inorder_res.append(poped_node.val)
+                node = poped_node.right
+    return inorder_res
 
 def run_test():
+    """
+         1
+        /  \
+       2    3
+      /\   / \
+     4  5 6   7
+    inorder: 4 2 5 1 6 3 7
+    """
     tree = build_tree([1, 2, 3, 4, 5, 6, 7])
     ans = [4, 2, 5, 1, 6, 3, 7]
     inorder_recursive_res = inorder_recursive(tree)
     test(inorder_recursive_res, ans)
+    inorder_iteration_res = inorder_iteration(tree)
+    test(inorder_iteration_res, ans)
+
+    """
+         1
+        / \
+       2   3
+      /\
+     4  5
+    inorder: 4 2 5 1 3
+    """
+    tree = build_tree([1, 2, 3, 4, 5])
+    ans = [4, 2, 5, 1, 3]
+    inorder_recursive_res = inorder_recursive(tree)
+    test(inorder_recursive_res, ans)
+    inorder_iteration_res = inorder_iteration(tree)
+    test(inorder_iteration_res, ans)
+
+    """
+         1
+        /
+       2
+      /\
+     4  5
+    inorder: 4 2 5 1 3
+    """
+    tree = build_tree([1, 2, None, 4, 5])
+    ans = [4, 2, 5, 1]
+    inorder_recursive_res = inorder_recursive(tree)
+    test(inorder_recursive_res, ans)
+    inorder_iteration_res = inorder_iteration(tree)
+    test(inorder_iteration_res, ans)
+
 
 def test(res, ans):
     try:
